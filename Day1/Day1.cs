@@ -7,13 +7,13 @@ namespace AdventOfCode2022
 {
     public static class Day1
     {
-        public static int Run() 
-        {
-            var input = System.IO.File.ReadAllLines(
+        private static string[] input = System.IO.File.ReadAllLines(
                 Path.Combine(Directory.GetCurrentDirectory(), "Day1/input.txt"));
-
-            int max = 0;
-            int prevTotal = 0;
+        
+        public static int RunPart1() 
+        {
+            var max = 0;
+            var prevTotal = 0;
             for (var i = 0; i < input.Length - 1; i++)
             {
                 if (String.IsNullOrEmpty(input[i]))
@@ -26,5 +26,29 @@ namespace AdventOfCode2022
             }
             return max;
         } 
+
+        public static int RunPart2() 
+        {
+            List<int> maxes = new List<int>();
+            var prevTotal = 0;
+            for (var i = 0; i < input.Length - 1; i++)
+            {
+                if (String.IsNullOrEmpty(input[i]))
+                {
+                    maxes.Add(prevTotal);
+                    prevTotal = 0;
+                    continue;
+                }
+                prevTotal += int.Parse(input[i]);
+            }
+
+            maxes.Sort();
+            var result = 0;
+            foreach (var item in maxes.ToArray()[^3..^0])
+            {
+                result += item;
+            }
+            return result;
+        }
     }
 }
