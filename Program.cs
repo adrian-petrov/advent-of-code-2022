@@ -9,7 +9,8 @@
             // Console.WriteLine(Day2.RunPart1());
             // Console.WriteLine(Day2.RunPart2());
             // Console.WriteLine(Day3.RunPart1());
-            Console.WriteLine(Day3.RunPart2());
+            // Console.WriteLine(Day3.RunPart2());
+            Console.WriteLine(Day4.RunPart1());
         }
     }
 }
