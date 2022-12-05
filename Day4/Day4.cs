@@ -23,16 +23,37 @@ namespace AdventOfCode2022
                 var (rightPairLowerRange, rightPairUpperRange) = GetSections(rightPair);
 
                 if (
-                    leftPairLowerRange >= rightPairLowerRange &&
-                    leftPairUpperRange <= rightPairUpperRange
+                    (leftPairLowerRange >= rightPairLowerRange &&
+                    leftPairUpperRange <= rightPairUpperRange) ||
+                    (rightPairLowerRange >= leftPairLowerRange &&
+                    rightPairUpperRange <= leftPairUpperRange)
                 )    
                 {
                     total++;
                 }
-                else if (
-                    rightPairLowerRange >= leftPairLowerRange &&
-                    rightPairUpperRange <= leftPairUpperRange
-                )
+            }
+            
+            return total;
+        }
+
+        public static int RunPart2()
+        {
+            var total = 0;
+            foreach (var item in input)
+            {   
+                var pairs = item.Split(','); 
+                var leftPair = pairs[0];
+                var rightPair = pairs[1];
+
+                var (leftPairLowerRange, leftPairUpperRange) = GetSections(leftPair);
+                var (rightPairLowerRange, rightPairUpperRange) = GetSections(rightPair);
+
+                if (
+                    (leftPairUpperRange >= rightPairLowerRange &&
+                    rightPairUpperRange >= leftPairLowerRange) ||
+                    (rightPairUpperRange >= leftPairLowerRange &&
+                    leftPairUpperRange >= rightPairLowerRange)
+                ) 
                 {
                     total++;
                 }
