@@ -29,5 +29,24 @@ namespace AdventOfCode2022
 
             return i;
         }
+
+        public static int RunPart2()
+        {
+            var seen = new HashSet<char>();
+            var j = 0;
+            for (var i = 0; i < input.Length && seen.Count < 14; i++)
+            {
+                for (j = i; j < i + 14; j++)
+                {
+                    if (!seen.Add(input[j]))
+                    {
+                        seen.Clear();
+                        break;
+                    }
+                }
+            }
+
+            return j;
+        }
     }
 }
