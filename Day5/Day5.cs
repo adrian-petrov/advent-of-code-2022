@@ -38,6 +38,47 @@ namespace AdventOfCode2022
             return result;
         }
 
+        public static string RunPart2()
+        {
+            var result = "";
+            var stackOfCrates = GetStackOfCrates(input);
+            var instructions = GetInstructions(input);
+
+            foreach (var instruction in instructions)
+            {
+                var move = instruction[0];
+                var from = stackOfCrates[instruction[1] - 1];
+                var to = stackOfCrates[instruction[2] - 1];
+
+                if (move > 1)
+                {
+                    var tempStack = new Stack<string>();
+                    for (var i = 0; i < move; i++)
+                    {
+                        var top = from.Pop();
+                        tempStack.Push(top);
+                    }
+                    while (tempStack.Count > 0)
+                    {
+                        to.Push(tempStack.Pop());
+                    }
+                }
+                else 
+                {
+                    var top = from.Pop();
+                    to.Push(top);
+                }
+            }
+            
+            foreach (var crate in stackOfCrates)
+            {
+                var top = crate.Pop();
+                result += top.Substring(1, 1);
+            }
+
+            return result;
+        }
+
         private static Stack<string>[] GetStackOfCrates(string[] input) 
         {   
             var arrayOfStacks = new Stack<string>[9];
