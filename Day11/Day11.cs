@@ -113,15 +113,15 @@ public static class Day11
                     
                     case 4:
                     {
-                        var ifFalse = row.Substring(row.IndexOf("monkey", StringComparison.InvariantCulture) + 7);
-                        newMonkey.MonkeyIfTrue = int.Parse(ifFalse);
+                        var ifTrue = row.Substring(row.IndexOf("monkey", StringComparison.InvariantCulture) + 7);
+                        newMonkey.MonkeyIfTrue = int.Parse(ifTrue);
                         break;
                     }
                     
                     case 5:
                     {
-                        var ifTrue = row.Substring(row.IndexOf("monkey", StringComparison.InvariantCulture) + 7);
-                        newMonkey.MonkeyIfFalse = int.Parse(ifTrue);
+                        var ifFalse = row.Substring(row.IndexOf("monkey", StringComparison.InvariantCulture) + 7);
+                        newMonkey.MonkeyIfFalse = int.Parse(ifFalse);
                         break;
                     }
                 }
